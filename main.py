@@ -38,5 +38,5 @@ def generate_password(length: int, symbols: bool, uppercase: bool) -> str:
 
 
 if __name__ == '__main__':
-    new_pass: str = generate_password(length=10, symbols=True, uppercase=False)
+    new_pass: str = generate_password(length=10, symbols=True, uppercase=True)
     print(new_pass)
