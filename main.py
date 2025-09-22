@@ -10,7 +10,7 @@ def contains_upper(password: str) -> bool:
     return False
 
 
-def contains_symbol(password: str) -> bool:
+def contains_symbols(password: str) -> bool:
     for char in password:
         if char in string.punctuation:
             return True
@@ -38,5 +38,7 @@ def generate_password(length: int, symbols: bool, uppercase: bool) -> str:
 
 
 if __name__ == '__main__':
-    new_pass: str = generate_password(length=24, symbols=True, uppercase=True)
-    print(new_pass)
+    for i in range(1, 6):
+        new_pass: str = generate_password(length=24, symbols=True, uppercase=True)
+        specs: str = f'U: {contains_upper(new_pass)}, S {contains_symbols(new_pass)}'
+        print(f'{i} -> {new_pass} ({specs})')
