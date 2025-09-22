@@ -18,4 +18,25 @@ def contains_symbol(password: str) -> bool:
     return False
 
 
-print(string.punctuation)
+def generate_password(length: int, symbols: bool, uppercase: bool) -> str:
+    combination: str = string.ascii_lowercase + string.digits
+
+    if symbols:
+        combination += string.punctuation
+    
+    if uppercase:
+        combination += string.ascii_uppercase
+
+
+    combination_length = len(combination)
+    new_password: str = ''
+
+    for _ in range(length):
+        new_password += combination[secrets.randbelow(combination_length)]
+
+    return new_password
+
+
+if __name__ == '__main__':
+    new_pass: str = generate_password(length=10, symbols=True, uppercase=False)
+    print(new_pass)
