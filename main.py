@@ -31,14 +31,18 @@ def generate_password(length: int, symbols: bool, uppercase: bool) -> str:
     combination_length = len(combination)
     new_password: str = ''
 
-    for _ in range(length):
-        new_password += combination[secrets.randbelow(combination_length)]
+    
 
+    while contains_symbols(new_password) == False or contains_upper(new_password) == False:
+        for _ in range(length):
+            new_password += combination[secrets.randbelow(combination_length)]
+            continue
     return new_password
+    
 
 
 if __name__ == '__main__':
     for i in range(1, 6):
-        new_pass: str = generate_password(length=24, symbols=True, uppercase=True)
+        new_pass: str = generate_password(length=3, symbols=True, uppercase=True)
         specs: str = f'U: {contains_upper(new_pass)}, S {contains_symbols(new_pass)}'
         print(f'{i} -> {new_pass} ({specs})')
